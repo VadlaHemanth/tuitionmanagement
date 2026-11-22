@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Production & build outputs
+dist/
+build/
+dev-dist/
+coverage/
+
+# Local databases and SQLite files
+data/
+*.db
+*.db-wal
+*.db-shm
+
+# Cloudflare Wrangler local state
+.wrangler/
+
+# Environment configuration & secrets
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# IDE and tool caches
+.DS_Store
+*.log
+.antigravity/
+.aistudio/
+.playwright-cli/

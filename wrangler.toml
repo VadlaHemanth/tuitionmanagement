@@ -1,0 +1,23 @@
+name = "tuitionmanagement"
+main = "cloudflare/worker.ts"
+compatibility_date = "2025-10-01"
+compatibility_flags = ["nodejs_compat"]
+
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+not_found_handling = "single-page-application"
+
+[build]
+command = "npm run build"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "tuitio-db1"
+database_id = "beb50307-24cf-4881-9c47-5369bf3deb4c"
+
+[triggers]
+# Free plan allows up to 3 cron triggers per Worker.
+# 12:00 UTC = 5:30 PM IST (daily tuition prep & fee reminders)
+# 14:30 UTC = 8:00 PM IST (end-of-session summary & carry-forward check)
+crons = ["0 12 * * *", "30 14 * * *"]

@@ -1,0 +1,23 @@
+name = "tuitio-smart-tuition"
+main = "worker.ts"
+compatibility_date = "2025-10-01"
+compatibility_flags = ["nodejs_compat"]
+
+[assets]
+directory = "../dist"
+binding = "ASSETS"
+not_found_handling = "single-page-application"
+
+[build]
+command = "npm run build"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "tuitio-db"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+
+[triggers]
+# Free plan allows up to 3 cron triggers per Worker.
+# 12:00 UTC = 5:30 PM IST (daily tuition prep & fee reminders)
+# 14:30 UTC = 8:00 PM IST (end-of-session summary & carry-forward check)
+crons = ["0 12 * * *", "30 14 * * *"]
